@@ -80,13 +80,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
+        // increase ball velocity by 2%
+        ball.physicsBody!.velocity.dx *= CGFloat(1.02)
+        ball.physicsBody!.velocity.dy *= CGFloat(1.02)
         if contact.bodyA.node?.name == "loseZone" ||
             contact.bodyB.node?.name == "loseZone" {
             lives -= 1
             if lives > 0 {
                 score = 0
                 resetGame()
-                kickBall()
+                ball.physicsBody?.applyImpulse(CGVector(dx: Int.random(in: -5...5), dy: 5))
             } else {
                 gameOver(winner: false)
             }
