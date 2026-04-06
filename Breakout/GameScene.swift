@@ -62,7 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        // check brick collisions
+        
         for brick in bricks {
             if contact.bodyA.node == brick || contact.bodyB.node == brick {
                 
@@ -79,7 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     nextColor = .green
                 }
                 
-                // 🔴 flash red first
+                
                 let flashRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.08)
                 let wait = SKAction.wait(forDuration: 0.05)
                 
